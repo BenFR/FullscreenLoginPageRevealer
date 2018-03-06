@@ -1,6 +1,9 @@
 # Fullscreen Login Page Revealer
 Displays the page's background while the user is completing the form
 
+![Fullscreen Login Page](https://ben-webdesigner.com/wp-content/uploads/2018/03/FullscreenLoginPage-before.jpg)
+
+![Fullscreen Login Page](https://ben-webdesigner.com/wp-content/uploads/2018/03/FullscreenLoginPage-after.jpg)
 
 [Article on the blog](https://en.ben-webdesigner.com/2018/03/06/fullscreen-login-page-revealer/) - [Demo](https://en.ben-webdesigner.com/Dev/FullscreenLoginPageRevealer/index.html)
 

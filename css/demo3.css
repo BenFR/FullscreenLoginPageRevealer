@@ -1,0 +1,214 @@
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300,400,700");
+@import url("https://fonts.googleapis.com/css?family=Lobster");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,700");
+@import url("https://fonts.googleapis.com/css?family=Berkshire+Swash");
+* {
+  box-sizing: border-box; }
+
+body {
+  font-family: "Quicksand", sans-serif;
+  font-size: 16px;
+  background: #FFF;
+  /* fallback for old browsers */ }
+
+.login {
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  text-align: center; }
+  .login .square {
+    position: relative; }
+    .login .square::before, .login .square::after {
+      content: "";
+      display: block;
+      width: 5rem;
+      height: 5rem;
+      position: absolute; }
+    .login .square::before {
+      top: -4rem;
+      left: -4rem;
+      border-top: 1px solid #2d2a28;
+      border-left: 1px solid #2d2a28;
+      box-shadow: -2px -2px 0px rgba(45, 42, 40, 0.15); }
+    .login .square::after {
+      bottom: -4rem;
+      right: -4rem;
+      border-bottom: 1px solid #2d2a28;
+      border-right: 1px solid #2d2a28;
+      box-shadow: 2px 2px 0px rgba(45, 42, 40, 0.15); }
+  .login .background-effect {
+    background: url(../img/background-curtains.png) center center no-repeat;
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    -webkit-filter: opacity(0.95);
+    -moz-filter: opacity(0.95);
+    -o-filter: opacity(0.95);
+    -ms-filter: opacity(0.95);
+    filter: opacity(0.95); }
+  .login .background-opacity {
+    background: url(../img/background3.jpg) center center no-repeat;
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -2; }
+  .login .background {
+    background: url(../img/background3.jpg) center center no-repeat;
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    -webkit-clip-path: polygon(50% 0, 50% 0%, 50% 100%, 50% 100%);
+    clip-path: polygon(50% 0, 50% 0%, 50% 100%, 50% 100%);
+    transition: all .5s ease-in-out; }
+  .login .form-title {
+    color: #2d2a28;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+    align-items: center;
+    justify-items: center; }
+    .login .form-title h2 {
+      font-size: 3rem;
+      margin: 0;
+      font-weight: 400;
+      font-family: "Berkshire Swash", cursive; }
+    .login .form-title a {
+      font-size: 1em;
+      color: #8b7353;
+      margin-top: 1em;
+      text-decoration: none; }
+      .login .form-title a:hover {
+        color: #FFF; }
+  .login a.password {
+    text-decoration: none;
+    color: #FFF;
+    text-align: center;
+    font-size: .7em;
+    margin-top: 2em;
+    display: block; }
+    .login a.password:hover {
+      opacity: 1;
+      color: #2d2a28; }
+
+form {
+  font-size: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto;
+  text-align: center;
+  grid-gap: 1rem;
+  margin-top: 2rem; }
+  form .submit {
+    width: 100%;
+    height: 3em;
+    line-height: 3em;
+    font-family: "Berkshire Swash", cursive;
+    color: #2d2a28;
+    background-color: #f1d48f;
+    border: none;
+    border-radius: calc(3em/2);
+    font-size: .85em;
+    cursor: pointer;
+    transition: all .25s ease-in-out;
+    position: relative;
+    overflow: hidden; }
+    form .submit:disabled {
+      opacity: .5;
+      cursor: not-allowed; }
+    form .submit:focus, form .submit:hover {
+      background: #f1d48f;
+      outline: none;
+      cursor: pointer; }
+    form .submit:active {
+      transform: scale(1.25);
+      outline: none; }
+    form .submit.success::before {
+      content: attr(data-success);
+      background: #ffd84f;
+      bottom: 0; }
+    form .submit.error::before {
+      content: attr(data-error);
+      background: #360e0e;
+      color: #FFF;
+      bottom: 0; }
+    form .submit:before {
+      display: block;
+      position: absolute;
+      content: attr(data-success);
+      top: 0;
+      bottom: 100%;
+      left: 0;
+      right: 0;
+      overflow: hidden;
+      transition: all .1s ease-in-out; }
+  form input[type=text], form input[type=password] {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    line-height: 3.5em;
+    padding-left: 1em;
+    padding-right: 1em;
+    text-align: center;
+    border: none;
+    background: transparent;
+    border-bottom: 3px double #f1d48f;
+    font-family: "Quicksand", sans-serif;
+    font-size: .8em;
+    font-weight: 700;
+    color: #2d2a28; }
+    form input[type=text]::-webkit-input-placeholder, form input[type=password]::-webkit-input-placeholder {
+      /* Chrome/Opera/Safari */
+      color: rgba(45, 42, 40, 0.5); }
+    form input[type=text]::-moz-placeholder, form input[type=password]::-moz-placeholder {
+      /* Firefox 19+ */
+      color: rgba(45, 42, 40, 0.5); }
+    form input[type=text]:-ms-input-placeholder, form input[type=password]:-ms-input-placeholder {
+      /* IE 10+ */
+      color: rgba(45, 42, 40, 0.5); }
+    form input[type=text]:-moz-placeholder, form input[type=password]:-moz-placeholder {
+      /* Firefox 18- */
+      color: rgba(45, 42, 40, 0.5); }
+    form input[type=text].filled, form input[type=password].filled {
+      color: #2d2a28;
+      background: transparent; }
+    form input[type=text]:focus, form input[type=password]:focus {
+      outline: none;
+      transition: all .1s ease-in-out;
+      display: inline-block;
+      border-color: #2d2a28; }
+      form input[type=text]:focus::-webkit-input-placeholder, form input[type=password]:focus::-webkit-input-placeholder {
+        /* Chrome/Opera/Safari */
+        color: #2d2a28; }
+      form input[type=text]:focus::-moz-placeholder, form input[type=password]:focus::-moz-placeholder {
+        /* Firefox 19+ */
+        color: #2d2a28; }
+      form input[type=text]:focus:-ms-input-placeholder, form input[type=password]:focus:-ms-input-placeholder {
+        /* IE 10+ */
+        color: #2d2a28; }
+      form input[type=text]:focus:-moz-placeholder, form input[type=password]:focus:-moz-placeholder {
+        /* Firefox 18- */
+        color: #2d2a28; }
+  form .group-label {
+    border: 2px solid transparent;
+    height: 3rem;
+    border-radius: calc(3em/2);
+    position: relative;
+    transition: all .15s ease-in-out; }
+    form .group-label.focus {
+      border-color: #FFF;
+      padding: .25em; }
+
+/*# sourceMappingURL=demo3.css.map */

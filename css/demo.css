@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300,400,700");
+@import url("https://fonts.googleapis.com/css?family=Lobster");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,700");
+@import url("https://fonts.googleapis.com/css?family=Berkshire+Swash");
+#demo {
+  position: absolute;
+  z-index: 10;
+  top: 50px;
+  left: 50px;
+  right: 50px;
+  display: grid;
+  align-items: center;
+  justify-content: start;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 3rem; }
+  #demo a.github {
+    color: #FFF;
+    opacity: .7;
+    font-size: 1.5em; }
+    #demo a.github:hover {
+      opacity: 1; }
+  #demo .back {
+    color: #FFF;
+    text-decoration: none;
+    display: grid;
+    align-items: center;
+    grid-template-columns: auto auto;
+    grid-gap: .5em; }
+    #demo .back:hover {
+      opacity: .7; }
+    #demo .back .far {
+      font-size: 1.5rem; }
+  #demo h1 {
+    font-size: 1rem;
+    color: #FFF;
+    font-weight: 400; }
+  #demo nav a {
+    color: #FFF;
+    text-decoration: none;
+    opacity: .5;
+    font-size: .8em;
+    margin-right: 1rem; }
+    #demo nav a.current {
+      opacity: 1; }
+
+/*# sourceMappingURL=demo.css.map */

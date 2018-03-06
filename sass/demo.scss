@@ -1,0 +1,53 @@
+@import "variables";
+
+#demo {
+  position: absolute;
+  z-index: 10;
+  top: 50px;
+  left: 50px;
+  right: 50px;
+  display: grid;
+  align-items: center;
+  justify-content: start;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 3rem;
+  a.github {
+    color: #FFF;
+    opacity: .7;
+    font-size: 1.5em;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  .back {
+    color: #FFF;
+    text-decoration: none;
+    display: grid;
+    align-items: center;
+    grid-template-columns: auto auto;
+    grid-gap: .5em;
+    &:hover {
+      opacity: .7;
+    }
+    .far {
+      font-size: 1.5rem;
+    }
+  }
+  h1 {
+    font-size: 1rem;
+    color: #FFF;
+    font-weight: 400;
+  }
+  nav {
+    a {
+      color: #FFF;
+      text-decoration: none;
+      opacity: .5;
+      font-size: .8em;
+      margin-right: 1rem;
+      &.current {
+        opacity: 1;
+      }
+    }
+  }
+}

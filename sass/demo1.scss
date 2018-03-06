@@ -1,0 +1,208 @@
+@import "variables";
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font;
+  font-size: 16px;
+  background: #0f0c29;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+
+.login {
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+
+  .background {
+    background: url(../img/background.jpg) center center no-repeat;
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    opacity: .2;
+    -webkit-clip-path: inset(0 0 100% 0);
+    clip-path: inset(0 0 100% 0);
+    transition: all .5s ease-in-out;
+  }
+
+  .form-title {
+    border-bottom: 2px solid #FFF;
+    padding-bottom: .5rem;
+    color: #FFF;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto;
+    align-items: end;
+    h2 {
+      font-size: 2rem;
+      margin: 0;
+      font-weight: 400;
+    }
+    a {
+      font-size: .8em;
+      color: $positiveColor;
+      padding-bottom: .5em;
+      justify-self: end;
+      text-decoration: none;
+      &:hover {
+        color: #FFF;
+      }
+    }
+  }
+
+  a.password {
+    text-decoration: none;
+    color: #FFF;
+    opacity: .5;
+    text-align: center;
+    font-size: .7em;
+    margin-top: 2em;
+    &:hover {
+      opacity: 1;
+      color: $positiveColor;
+    }
+  }
+}
+
+form {
+  font-size: 1rem;
+  width: 300px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto;
+
+  label {
+    font-size: .85em;
+    color: $secondaryColor;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: all .15s ease-in-out;
+    background: $primaryColor;
+    color: #FFF;
+    display: inline-block;
+    padding: .5em 1em;
+    margin-top: .5em;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    &.on {
+      color: #6c6898;
+      transform: scaleY(1);
+    }
+  }
+
+  .submit {
+    width: 100%;
+    height: 3em;
+    line-height: 3em;
+    margin-top: 2rem;
+    background: $primaryColor;
+    color: #FFF;
+    border: none;
+    border-radius: 5px;
+    font-size: .85em;
+    cursor: pointer;
+    transition: all .25s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    &:disabled {
+      opacity: .5;
+      cursor: not-allowed;
+    }
+    &:focus, &:hover {
+      background: $secondaryColor;
+      outline: none;
+    }
+    &:active {
+      transform: scale(1.25);
+      outline: none;
+    }
+    &.success {
+      &::before {
+        content: attr(data-success);
+        background: $positiveColor;
+        bottom: 0;
+      }
+    }
+    &.error {
+      &::before {
+        content: attr(data-error);
+        background: $negativeColor;
+        color: #921830;
+        bottom: 0;
+      }
+    }
+    &:before {
+      display: block;
+      position: absolute;
+      content: attr(data-success);
+      top: 0;
+      bottom: 100%;
+      left: 0;
+      right: 0;
+      overflow: hidden;
+      transition: all .1s ease-in-out;
+    }
+  }
+
+  input[type=text], input[type=password] {
+    width: 100%;
+    height: 3em;
+    line-height: 3em;
+    padding-left: 1em;
+    padding-right: 1em;
+    border-radius: 5px;
+    border: none;
+    background: rgba(255, 255, 255, .1);
+    font-family: $font;
+    font-size: .85em;
+    font-weight: 400;
+    color: $primaryColor;
+    &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+      color: rgba(255, 255, 255, .4);
+    }
+    &::-moz-placeholder { /* Firefox 19+ */
+      color: rgba(255, 255, 255, .4);
+    }
+    &:-ms-input-placeholder { /* IE 10+ */
+      color: rgba(255, 255, 255, .4);
+    }
+    &:-moz-placeholder { /* Firefox 18- */
+      color: rgba(255, 255, 255, .4);
+    }
+    &.filled {
+      border-top-left-radius: 0;
+      background: #FFF;
+    }
+    &:focus {
+      outline: none;
+      background: $primaryColor;
+      color: #FFF;
+      transition: all .1s ease-in-out;
+      border-top-left-radius: 0;
+      &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: $primaryColor;
+      }
+      &::-moz-placeholder { /* Firefox 19+ */
+        color: $primaryColor;
+      }
+      &:-ms-input-placeholder { /* IE 10+ */
+        color: $primaryColor;
+      }
+      &:-moz-placeholder { /* Firefox 18- */
+        color: $primaryColor;
+      }
+    }
+  }
+}

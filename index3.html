@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fullscreen Login Page Revealer</title>
+    <meta name="description" content="Displays the page's background while the user is completing the form" />
+    <link rel="stylesheet" href="css/demo.css">
+    <link rel="stylesheet" href="css/demo3.css">
+    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+    <link rel="shortcut icon" href="https://ben-webdesigner.com/wp-content/uploads/2018/02/b-16.png" type="image/x-icon" />
+		<link rel="apple-touch-icon" href="https://ben-webdesigner.com/wp-content/uploads/2018/02/b-57.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="https://ben-webdesigner.com/wp-content/uploads/2018/02/b-114.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="https://ben-webdesigner.com/wp-content/uploads/2018/02/b-72.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="https://ben-webdesigner.com/wp-content/uploads/2018/02/b-144.png">
+  </head>
+  <body>
+
+    <div id="demo">
+      <a class="back" href="https://en.ben-webdesigner.com/2018/03/06/fullscreen-login-page-revealer/" title="Back to the article">
+        <i class="far fa-arrow-alt-circle-left"></i>
+        <div>back to the article</div>
+      </a>
+      <h1>FullScreen Login Page Revealer</h1>
+      <nav>
+        <a href="index.html">Demo 1</a>
+        <a href="index2.html">Demo 2</a>
+        <a class="current" href="index3.html">Demo 3</a>
+      </nav>
+      <a class="github" href="https://github.com/BenFR/FullscreenLoginPageRevealer" target="_blank" title="Back to the article">
+        <i class="fab fa-github-square"></i>
+      </a>
+    </div>
+
+
+    <div class="login">
+      <div class="background-opacity"></div>
+      <div class="background-effect"></div>
+      <div class="background"></div>
+      <div class="square">
+        <div class="form-title">
+          <h2>Welcome back</h2>
+          <a href="#">join our wonderful world</a>
+        </div>
+        <form>
+          <div class="group-label">
+            <input id="login" type="text" class="required" placeholder="Insert your login" />
+          </div>
+          <div class="group-label">
+            <input id="password" type="password" class="required" placeholder="Insert your password" />
+          </div>
+          <button disabled onclick="checkingLogIn(this);" class="submit" type="button" value="Log in" data-success="You're connected !" data-error="Login failed...">Log in</Button>
+        </form>
+        <a href="#" class="password">I've forgot my password</a>
+      </div>
+    </div>
+
+
+    <script type="text/javascript">
+      const inputElements = document.querySelectorAll('input');
+      const inputRequired = document.querySelectorAll('.required');
+      const inputFilled = [];
+      inputElements.forEach(input => {
+        input.addEventListener("focusout", event => {
+          if (event.target.value.length > 0) {
+            event.target.classList.add('filled')
+          } else {
+            event.target.classList.remove('filled');
+          }
+        });
+        input.addEventListener("keyup", event => {
+          const indexInput = inputFilled.indexOf(event.target);
+          if (event.target.value.length > 0) {
+            if (indexInput == -1) {
+              inputFilled.push(event.target);
+            }
+          } else {
+            if (indexInput != -1) {
+              inputFilled.splice(indexInput, 1);
+            }
+          }
+          const background = document.querySelector('.login .background');
+          let ratioFilled = inputFilled.length / inputRequired.length * 100;
+          let clipPathToBottomLeft = 50 - (ratioFilled/2) + "%";
+          let clipPathToBottomRight = 50 + (ratioFilled/2) + "%";
+          let clipPathToTopLeft = 50 - (ratioFilled/2.5) + "%";
+          let clipPathToTopRight = 50 + (ratioFilled/2.5) + "%";
+          background.style.clipPath = "polygon(" + clipPathToTopLeft + " 0, " + clipPathToTopRight + " 0%, " + clipPathToBottomRight + " 100%, " + clipPathToBottomLeft + " 100%)";
+          if (inputFilled.length == inputRequired.length) {
+            document.querySelector('.login .submit').removeAttribute('disabled');
+          } else {
+            document.querySelector('.login .submit').setAttribute('disabled');
+          }
+        });
+      })
+
+      const checkingLogIn = (submitButton) => {
+
+        // Your ajax function...
+
+        // Set 'success' 1 if login successed
+        // Set 'success' 0 if login failed
+
+        const success = 0;
+        const redirectionPage = "http://www.google.com";
+
+        if (success) {
+          submitButton.classList.add('success');
+          setTimeout(() => {
+            document.location.href = redirectionPage;
+          }, 1000);
+        } else {
+          submitButton.classList.add('error');
+          document.querySelector('#login').value = null;
+          document.querySelector('#password').value = null;
+          const background = document.querySelector('.login .background');
+          background.style.clipPath = "polygon(50% 0, 50% 0%, 50% 100%, 50% 100%)";
+          setTimeout(() => {
+            submitButton.classList.remove('error');
+          }, 2000);
+        }
+
+      }
+    </script>
+
+  </body>
+
+</html>

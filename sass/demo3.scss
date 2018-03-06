@@ -1,0 +1,254 @@
+@import "variables";
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font;
+  font-size: 16px;
+  background: #FFF;  /* fallback for old browsers */
+  //background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
+  //background: linear-gradient(to right, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+
+.login {
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  .square {
+    position: relative;
+    &::before, &::after {
+      content: "";
+      display: block;
+      width: 5rem;
+      height: 5rem;
+      position: absolute;
+    }
+    &::before {
+      top: -4rem;
+      left: -4rem;
+      border-top: 1px solid $primaryColor3;
+      border-left: 1px solid $primaryColor3;
+      box-shadow: -2px -2px 0px rgba($primaryColor3, .15);
+    }
+    &::after {
+      bottom: -4rem;
+      right: -4rem;
+      border-bottom: 1px solid $primaryColor3;
+      border-right: 1px solid $primaryColor3;
+      box-shadow: 2px 2px 0px rgba($primaryColor3, .15);
+    }
+  }
+
+  .background-effect {
+    background: url(../img/background-curtains.png) center center no-repeat;
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    -webkit-filter: opacity(.95);
+    -moz-filter: opacity(.95);
+    -o-filter: opacity(.95);
+    -ms-filter: opacity(.95);
+    filter: opacity(.95);
+  }
+  .background-opacity {
+    background: url(../img/background3.jpg) center center no-repeat;
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -2;
+  }
+  .background {
+    background: url(../img/background3.jpg) center center no-repeat;
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    -webkit-clip-path: polygon(50% 0, 50% 0%, 50% 100%, 50% 100%);
+    clip-path: polygon(50% 0, 50% 0%, 50% 100%, 50% 100%);
+    transition: all .5s ease-in-out;
+  }
+
+  .form-title {
+    color: $primaryColor3;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+    align-items: center;
+    justify-items: center;
+    h2 {
+      font-size: 3rem;
+      margin: 0;
+      font-weight: 400;
+      font-family: $fontTitle3;
+    }
+    a {
+      font-size: 1em;
+      color: #8b7353;
+      margin-top: 1em;
+      text-decoration: none;
+      &:hover {
+        color: #FFF;
+      }
+    }
+  }
+
+  a.password {
+    text-decoration: none;
+    color: #FFF;
+    text-align: center;
+    font-size: .7em;
+    margin-top: 2em;
+    display: block;
+    &:hover {
+      opacity: 1;
+      color: $primaryColor3;
+    }
+  }
+}
+
+form {
+  font-size: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto;
+  text-align: center;
+  grid-gap: 1rem;
+  margin-top: 2rem;
+
+  .submit {
+    width: 100%;
+    height: 3em;
+    line-height: 3em;
+    font-family: $fontTitle3;
+    color: $primaryColor3;
+    background-color: $secondaryColor3;
+    border: none;
+    border-radius: calc(3em/2);
+    font-size: .85em;
+    cursor: pointer;
+    transition: all .25s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    //text-transform: uppercase;
+    &:disabled {
+      opacity: .5;
+      cursor: not-allowed;
+    }
+    &:focus, &:hover {
+      background: $secondaryColor3;
+      outline: none;
+      cursor: pointer;
+    }
+    &:active {
+      transform: scale(1.25);
+      outline: none;
+    }
+    &.success {
+      &::before {
+        content: attr(data-success);
+        background: $positiveColor3;
+        bottom: 0;
+      }
+    }
+    &.error {
+      &::before {
+        content: attr(data-error);
+        background: $negativeColor2;
+        color: #FFF;
+        bottom: 0;
+      }
+    }
+    &:before {
+      display: block;
+      position: absolute;
+      content: attr(data-success);
+      top: 0;
+      bottom: 100%;
+      left: 0;
+      right: 0;
+      overflow: hidden;
+      transition: all .1s ease-in-out;
+    }
+  }
+
+  input[type=text], input[type=password] {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    line-height: 3.5em;
+    padding-left: 1em;
+    padding-right: 1em;
+    text-align: center;
+    border: none;
+    background: transparent;
+    border-bottom: 3px double $secondaryColor3;
+    font-family: $font;
+    font-size: .8em;
+    font-weight: 700;
+    color: $primaryColor3;
+    &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+      color: rgba($primaryColor3, .5);
+    }
+    &::-moz-placeholder { /* Firefox 19+ */
+      color: rgba($primaryColor3, .5);
+    }
+    &:-ms-input-placeholder { /* IE 10+ */
+      color: rgba($primaryColor3, .5);
+    }
+    &:-moz-placeholder { /* Firefox 18- */
+      color: rgba($primaryColor3, .5);
+    }
+    &.filled {
+      color: $primaryColor3;
+      background: transparent;
+    }
+    &:focus {
+      outline: none;
+      transition: all .1s ease-in-out;
+      display: inline-block;
+      border-color: $primaryColor3;
+      &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: $primaryColor3;
+      }
+      &::-moz-placeholder { /* Firefox 19+ */
+        color: $primaryColor3;
+      }
+      &:-ms-input-placeholder { /* IE 10+ */
+        color: $primaryColor3;
+      }
+      &:-moz-placeholder { /* Firefox 18- */
+        color: $primaryColor3;
+      }
+    }
+  }
+
+  .group-label {
+    border: 2px solid transparent;
+    height: 3rem;
+    border-radius: calc(3em/2);
+    position: relative;
+    transition: all .15s ease-in-out;
+    &.focus {
+      border-color: #FFF;
+      padding: .25em;
+    }
+  }
+
+}
